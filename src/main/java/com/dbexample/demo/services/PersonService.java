@@ -18,4 +18,8 @@ public class PersonService {
 
 		return found.orElse(null);
 	}
+
+	public Person addPerson (Person person){
+		return personRepository.save(person);
+	}
 }

@@ -4,10 +4,7 @@ import com.dbexample.demo.entities.Person;
 import com.dbexample.demo.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v3")
@@ -24,6 +21,12 @@ public class PersonController {
 		}else{
 			return ResponseEntity.notFound().build();
 		}
-
 	}
+
+	@PostMapping("/person")
+	public ResponseEntity<?> addPerson (@RequestBody Person person){
+		personService.addPerson(person);
+		return ResponseEntity.ok(person);
+	}
+
 }
